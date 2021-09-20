@@ -19,6 +19,15 @@
         <p>Already Registered? <a href="/login"> Click Here</a></p>
         <button type="submit">Register</button>
     </form>
+    {% if request.args['error'] == "user-or-email-exists" %}
+        <p> Error: User is already registered </p>
+    {% endif %}
+    {% if request.args['error'] == "passwords-dont-match" %}
+        <p> Error: Passwords do not match </p>
+    {% endif %}
+    {% if request.args['error'] == "missing-fields"%}
+        <p> Error: There are missing fields. Please enter all the values </p>
+    {% endif %}
 </body>
 
 </html>

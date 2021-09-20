@@ -46,8 +46,10 @@ def show():
                     db.session.commit()
                 except:
                     return redirect(url_for('register.show') + '?error=user-or-email-exists')
-
+             
                 return redirect(url_for('redirect.show'))
+            elif password != confirm_password:
+                return redirect(url_for('register.show') + '?error=passwords-dont-match')
         else:
             return redirect(url_for('register.show') + '?error=missing-fields')
     else:
